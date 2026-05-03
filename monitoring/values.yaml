@@ -1,0 +1,20 @@
+nodeExporter:
+  enabled: false
+
+grafana:
+  enabled: true
+  service:
+    type: NodePort
+    port: 80
+
+prometheus:
+  enabled: true
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+
+alertmanager:
+  enabled: true
+
+kubelet:
+  serviceMonitor:
+    https: false
