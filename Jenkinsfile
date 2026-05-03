@@ -9,9 +9,9 @@ stages {
         }
     }
 
-    stage('Build Docker Image') {
+    stage('Build Skipped (Local Docker)') {
         steps {
-            sh 'docker build -t flash-sale-app .'
+            echo "Docker build skipped in Jenkins (handled locally)"
         }
     }
 
