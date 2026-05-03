@@ -5,7 +5,7 @@ stages {
 
     stage('Clone Code') {
         steps {
-            git 'https://github.com/MS-Devil/flash-sale-autoscaling-system.git'
+            git branch: 'main', url: 'https://github.com/MS-Devil/flash-sale-autoscaling-system.git'
         }
     }
 
