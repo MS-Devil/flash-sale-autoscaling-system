@@ -1,8 +1,9 @@
 pipeline {
 agent any
 
+```
 environment {
-    DOCKER_IMAGE = "your-dockerhub-username/flash-sale-app"
+    DOCKER_IMAGE = "Kaalbhairava/flash-sale-app"
 }
 
 stages {
@@ -21,8 +22,10 @@ stages {
 
     stage('Docker Login') {
         steps {
-            withCredentials([usernamePassword(credentialsId: '44912b51-4823-4682-9d85-d3ab5910b030', usernameVariable: 'Kaalbhairava', passwordVariable: 'Medsak@2002')]) {
-                sh 'echo $PASS | docker login -u $USER --password-stdin'
+            withCredentials([usernamePassword(credentialsId: '44912b51-4823-4682-9d85-d3ab5910b030', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+                sh """
+                echo "$PASS" | docker login -u "$USER" --password-stdin
+                """
             }
         }
     }
@@ -41,5 +44,6 @@ stages {
     }
 
 }
+```
 
 }
