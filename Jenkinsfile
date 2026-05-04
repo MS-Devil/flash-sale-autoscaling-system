@@ -1,7 +1,6 @@
 pipeline {
 agent any
 
-```
 environment {
     DOCKER_IMAGE = "Kaalbhairava/flash-sale-app"
 }
@@ -44,6 +43,5 @@ stages {
     }
 
 }
-```
 
 }
