@@ -19,15 +19,16 @@ stages {
         }
     }
 
-    stage('Docker Login') {
-        steps {
-            withCredentials([usernamePassword(credentialsId: '44912b51-4823-4682-9d85-d3ab5910b030', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-                sh """
-                echo "$PASS" | docker login -u "$USER" --password-stdin
-                """
-            }
-        }
-    }
+   stage('Docker Login') {
+steps {
+withCredentials([usernamePassword(credentialsId: '44912b51-4823-4682-9d85-d3ab5910b030', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+sh '''
+echo "$PASSWORD" | docker login -u "$USERNAME" --password-stdin
+'''
+}
+}
+}
+
 
     stage('Push Image') {
         steps {
