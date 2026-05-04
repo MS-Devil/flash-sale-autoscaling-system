@@ -2,7 +2,8 @@ pipeline {
 agent any
 
 environment {
-    DOCKER_IMAGE = "kaalbhairava/flash-sale-app"
+    IMAGE_NAME = "kaalbhairava/flash-sale-app"
+    IMAGE_TAG = "v${BUILD_NUMBER}"
 }
 
 stages {
@@ -15,7 +16,7 @@ stages {
 
     stage('Build Docker Image') {
         steps {
-            sh 'docker build -t $DOCKER_IMAGE:latest .'
+            sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
         }
     }
 
@@ -31,14 +32,15 @@ stages {
 
     stage('Push Image') {
         steps {
-            sh 'docker push $DOCKER_IMAGE:latest'
+            sh 'docker push $IMAGE_NAME:$IMAGE_TAG'
         }
     }
 
     stage('Deploy to Kubernetes') {
         steps {
-            sh 'kubectl apply -f k8s/deployment.yaml'
-            sh 'kubectl apply -f k8s/service.yaml'
+            sh '''
+            kubectl set image deployment/flash-sale-app flash-sale-app=$IMAGE_NAME:$IMAGE_TAG
+            '''
         }
     }
 
