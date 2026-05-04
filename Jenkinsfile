@@ -39,7 +39,7 @@ stages {
     stage('Deploy to Kubernetes') {
         steps {
             sh '''
-            kubectl set image deployment/flash-sale-app flash-sale-app=$IMAGE_NAME:$IMAGE_TAG
+            kubectl set image deployment/flash-sale-app flash-sale-container=$IMAGE_NAME:$IMAGE_TAG
             '''
         }
     }
