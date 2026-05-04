@@ -46,4 +46,3 @@ withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVari
 
 }
 
-}
