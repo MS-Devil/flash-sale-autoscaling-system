@@ -32,6 +32,25 @@ GitHub → Jenkins → Docker → DockerHub → Kubernetes → Users
 * Jenkins (CI/CD)
 * Prometheus + Grafana (Monitoring)
 
+## 🏗️ Architecture Diagram
+
+```
+User
+  ↓
+Kubernetes Service (NodePort)
+  ↓
+Pods (Auto Scaling - HPA)
+  ↓
+Docker Image (Versioned: v1, v2, v3)
+  ↓
+DockerHub
+  ↓
+Jenkins CI/CD Pipeline
+  ↓
+GitHub Repository
+```
+
+
 ---
 
 ## 🔥 Features
